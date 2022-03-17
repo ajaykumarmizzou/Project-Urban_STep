@@ -1,0 +1,166 @@
+@extends('layouts.app')
+
+@section('content')
+    <style>
+        .alert-success, .alert-danger{
+            width: 46%;
+            text-align: center;
+            margin-left: 345px;
+        }
+        ul {
+            list-style-type: none;
+        }
+    </style>
+    <section class="dt-breadcrumbs">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href="#">Home</a>
+                            <li><a href="#">Feedback</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about-us">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-sm-12">
+                        <h2 class="cmn-h2">Feedback</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="feedback-table">
+                            <h4><b>Feedback on Projects</b></h4>
+                            <div class="table-box">
+                                <table class="table table-bordered table-responsive clr-oddEven">
+                                    <tr>
+                                        <th class="text-center" width="100px">S. No.</th>
+                                        <th>Project Name</th>
+                                        <th>Project description</th>
+                                        <th>Location</th>
+                                        <th>Feedback</th>
+                                    </tr>
+                                    @if(count($resultss) > 0)
+                                        @foreach($resultss as $result)
+                                            <?php $location = \App\Area:: where('status',1)->where('id',$result->location)->first();?>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td>{{$result->name}}</td>
+                                                <td>{{$result->description}}</td>
+                                                <td>{{$location->area}}</td>
+                                                <td><input type="text" id="feedback" name="feedback" class="form-control"></td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="5">No Projects Found</td>
+                                        </tr>
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                        <div class="feedback-table">
+                            <h4><b>Feedback on Authorities</b></h4>
+                            <div class="table-box">
+                                <table class="table table-bordered table-responsive clr-oddEven">
+                                    <tr>
+                                        <th class="text-center" width="100px">S. No.</th>
+                                        <th>Authority Name</th>
+                                        <th width="200px" class="text-center">Rating</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td></td>
+                                        <td class="text-center">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td></td>
+                                        <td class="text-center">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td></td>
+                                        <td class="text-center">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">4</td>
+                                        <td></td>
+                                        <td class="text-center">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td></td>
+                                        <td class="text-center">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="feedback-table">
+                            <h4><b>Feedback on Portal</b></h4>
+                            <div class="table-box portal">
+                                <table class="table table-bordered table-responsive clr-oddEven">
+                                    <tr>
+                                        <td class="text-center">Rating</td>
+                                        <td class="text-center">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </td>
+                                        <td>Reason</td>
+                                        <td><input type="text" id="portal_reason" name="portal_reason" class="form-control"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+@stop

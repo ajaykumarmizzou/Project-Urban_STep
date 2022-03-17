@@ -1,0 +1,89 @@
+@extends('layouts.app')
+@section('content')
+<section class="dashboard-main">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="dashboard-main-wrapper">
+                <div class="dashboard-navigation">
+                    <a class="close-dashnav" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <ul class="dashboard-menu">
+                        <li>
+                            <a  href="{{url('/dashboard')}}"><i class="fa fa-table"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-user-circle"></i>My Profile</a>
+                            <div id="submenu-1" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li>
+                                        <a href="{{url('/view-profile')}}"><i class="fa fa-eye"></i>View Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/edit-profile')}}"><i class="fa fa-pencil"></i>Edit Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/reset-password')}}"><i class="fa fa-lock"></i>Change Password</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{url('/my-complain')}}"><i class="fa fa-file"></i>Grievance</a>
+                        </li>
+                        <li>
+                            <a class="active" class="nav-link" href="{{url('/my-suggestion')}}"><i class="fa fa-file"></i>Suggestion</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{url('/my-feedback')}}"><i class="fa fa-file"></i>Feedback</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{url('/my-discussion')}}"><i class="fa fa-file"></i>Discussion</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{url('/logout')}}"><i class="fa fa-sign-out"></i>Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dashboard-wrapper">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">Suggestion</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mgt40p">
+                        <div class="col-sm-12">
+                            <div class="complain-grid">
+                                <?php if(count($results) > 0){
+                                $i = 1;
+                                foreach($results as $result){?>
+                                <div class="complainBx">
+                                    <h2>Suggestion Title</h2>
+                                    <div class="details">
+                                        <div class="complain-date">
+                                            <h4>Dtate : <span><?php echo date('d',strtotime($result->created_at)).' '. date('M',strtotime($result->created_at)).' '. date('Y',strtotime($result->created_at))?></span></h4>
+                                        </div>
+                                        <div class="complain-id">
+                                            <h4>Complain ID : <span>mcd00<?php echo $i;?></span></h4>
+                                        </div>
+                                        <div class="complain-status">
+                                            <h4>Status : <?php if($result->is_status==0){echo '<span>Pending</span>';} elseif($result->is_status==1){echo '<span class="solved">Resolved<span>';}  elseif($result->is_status==2) {echo '<span>Cancelled<span>';}?></h4>
+                                        </div>
+                                    </div>
+                                    <div class="complain">
+                                        <p>{{$result->suggestion}}</p>
+                                    </div>
+                                </div>
+
+                                <?php $i++; } } else{ ?>
+                                <div class="complainBx">No Suggestion</div>
+                                <?php }?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@stop
