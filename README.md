@@ -13,6 +13,8 @@ Would also be a comprehensive guide to events, ideas and actions that impact the
 Participatory planning is an urban planning paradigm that facilitates involvement of local community from the initial stage of local area plan preparation for efficient and responsive urban planning or community-level planning processes. 
 The Participatory Strategic Planning process is a consensus-building approach that enables community to voice their opinions of how they want their local area to develop over the next few years. The participatory planning method has its roots in the United States which has also influenced western European countries over the years.
 
+ I have worked with the Design Innovation Center, SPA, New Delhi, on "UrbanSTep" (Launched in 2019 at www.urbanstep.in). My role was to assist and develop the Android and Web application.
+
 <p align="center">
   <img src="https://github.com/xenificity/Project_Urban_STep/blob/main/Capture1.JPG" />
 </p>
